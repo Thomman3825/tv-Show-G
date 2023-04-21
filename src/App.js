@@ -12,6 +12,7 @@ import TVShowListItem from './TVShowListItem/TVShowListItem';
 
 function App() {
   const [tvShows, setTvShows]=useState('')
+  const [recList, setRecList]=useState([])
 
   async function getPopularShows(){
     const popShow = await tvShowAPI.fetchShowAPI()
@@ -19,13 +20,28 @@ function App() {
     // console.log(popShow[0].backdrop_path)
     
   }
+  async function getRecommendation(tvShowID){
+    const reclistRes= await tvShowAPI.fetchRecommendations(tvShowID)
+    if (reclistRes.length > 0){
+      console.log(reclistRes)
+      setRecList(reclistRes.slice(0,10))
+    }
+   
+    
+  }
   console.log(tvShows.backdrop_path)
 
   useEffect(()=>{
     getPopularShows()
-     console.log(tvShows)
+     //console.log(tvShows)
   },[])
 
+  useEffect(()=>{
+    if(tvShows){
+      getRecommendation(tvShows.id)
+    }
+    },[tvShows])
+  console.log(recList)
   return (
     <div className={s.container}
     style={{background: tvShows ? `linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url(${BACKDROP_BASE_URL}${tvShows.backdrop_path}) no-repeat center/cover`:'black'}}>
