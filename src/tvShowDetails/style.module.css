@@ -1,6 +1,7 @@
 .showName{
     font-size: 40px;
     font-weight: 400;
+    
 }
 .overview{
     font-size: 20px;
@@ -8,10 +9,12 @@
     height: 100px;
     overflow-y: hidden;
     margin: 5px;
+    
 }
 .overview:hover{
     overflow-y: auto;
 }
 .ratingContainer{
 display: flex;
+
 }

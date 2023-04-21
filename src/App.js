@@ -5,6 +5,10 @@ import { tvShowAPI } from './APIs/tvShowAPI';
 import { useEffect, useState } from 'react';
 import { BACKDROP_BASE_URL } from './URLs';
 import { ShowDetails } from './tvShowDetails/ShowDetails';
+import Logo from './Logo/Logo';
+import logoImg from './Assets/Images/OSGLogo.png'
+import TVShowListItem from './TVShowListItem/TVShowListItem';
+
 
 function App() {
   const [tvShows, setTvShows]=useState('')
@@ -28,10 +32,9 @@ function App() {
       <div className={s.header}>
       <div className='row'>
               <div className='col-4'>
-                <div>Logo</div>
-                <div>Subtitle</div>
+                <Logo logoImg={logoImg} title={'One-Stop-G'} desc={'Your best TV Shw guide'} ></Logo>
               </div>
-              <div className='col-md-12 col-lg-4'>
+              <div className='col-sm-12 col-md-4 col-lg-4'>
                 <input type='text' placeholder="seach" style={{width:"100%"}}></input>
               </div>
           </div>
@@ -39,7 +42,18 @@ function App() {
       <div className={s.show_details}>
         {tvShows && <ShowDetails tvshow={tvShows}></ShowDetails>}
       </div>
-      <div className={s.recommendations}>Recommendations</div>
+      <div className={s.recommendations}>
+        <div>
+        {tvShows && <TVShowListItem tvshow={tvShows} onClick={(tvshow)=>{
+        console.log(tvshow)
+      }}></TVShowListItem>}
+
+        {tvShows && <TVShowListItem tvshow={tvShows} onClick={(tvshow)=>{
+        console.log(tvshow)
+      }}></TVShowListItem>}
+        </div>
+        
+       </div>
     </div>
   );
 }

@@ -1,0 +1,19 @@
+.imgContainer{
+    display: flex;
+}
+.titleC{
+    font-weight: 400;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 5px;
+    white-space: nowrap;
+}
+.image{
+    background-color: black;
+    height: 50px;
+    width: 50px;
+}
+.desc{
+    font-weight: 300;
+    white-space: nowrap;
+}
