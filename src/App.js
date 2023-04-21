@@ -4,13 +4,14 @@ import s from './style.module.css'
 import { tvShowAPI } from './APIs/tvShowAPI';
 import { useEffect, useState } from 'react';
 import { BACKDROP_BASE_URL } from './URLs';
+import { ShowDetails } from './tvShowDetails/ShowDetails';
 
 function App() {
   const [tvShows, setTvShows]=useState('')
 
   async function getPopularShows(){
     const popShow = await tvShowAPI.fetchShowAPI()
-    setTvShows(popShow[0])
+    setTvShows(popShow[1])
     // console.log(popShow[0].backdrop_path)
     
   }
@@ -18,7 +19,7 @@ function App() {
 
   useEffect(()=>{
     getPopularShows()
-    // console.log(tvShows)
+     console.log(tvShows)
   },[])
 
   return (
@@ -35,7 +36,9 @@ function App() {
               </div>
           </div>
       </div>
-      <div className={s.show_details}> Show Details</div>
+      <div className={s.show_details}>
+        {tvShows && <ShowDetails tvshow={tvShows}></ShowDetails>}
+      </div>
       <div className={s.recommendations}>Recommendations</div>
     </div>
   );
