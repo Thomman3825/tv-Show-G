@@ -9,6 +9,7 @@ import Logo from './Logo/Logo';
 import logoImg from './Assets/Images/OSGLogo.png'
 import TVShowListItem from './TVShowListItem/TVShowListItem';
 import TVShowList from './TVShowList/TVShowList';
+import SearchBar from './SearchBar/SearchBar';
 
 function App() {
   const [tvShows, setTvShows]=useState('')
@@ -30,10 +31,17 @@ function App() {
       console.log(reclistRes)
       setRecList(reclistRes.slice(0,10))
     }
-   
-    
   }
-  console.log(tvShows.backdrop_path)
+
+  async function getTVShowBytitle (tvShowname){
+    const resByName= await tvShowAPI.fetchByName(tvShowname)
+    if (resByName.length >0){
+      setTvShows(resByName[0])
+      console.log(resByName);
+    }
+  }
+  
+  // console.log(tvShows.backdrop_path)
 
   useEffect(()=>{
     getPopularShows()
@@ -55,7 +63,8 @@ function App() {
                 <Logo logoImg={logoImg} title={'One-Stop-G'} desc={'Your best TV Shw guide'} ></Logo>
               </div>
               <div className='col-sm-12 col-md-4 col-lg-4'>
-                <input type='text' placeholder="seach" style={{width:"100%"}}></input>
+              <SearchBar onSubmit={getTVShowBytitle}></SearchBar>
+
               </div>
           </div>
       </div>

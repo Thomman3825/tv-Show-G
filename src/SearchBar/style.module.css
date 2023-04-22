@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+}
+.searchIcon{
+    font-size: 20px;
+    position: absolute;
+}
+.searchBar{
+    border-radius: 25px;
+    background-color: gray;
+    width: 100%;
+    color: white;
+    border-color: transparent;
+    padding-left: 30px;
+    
+
+}
+.searchBar::placeholder{
+    color: white;
+    
+}
