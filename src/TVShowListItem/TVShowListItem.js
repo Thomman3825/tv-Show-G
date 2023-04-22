@@ -7,6 +7,7 @@ const TVShowListItem = ({tvshow,onClick}) => {
     // const onClickItem = ()=>{
     //     onClick(tvshow)
     // }
+    
   return (
     <div className={s.container} onClick={()=>{
         onClick(tvshow)
@@ -14,7 +15,7 @@ const TVShowListItem = ({tvshow,onClick}) => {
         <img className={s.image} src={`${BACKDROP_BASE_URL_SMALL}${tvshow.backdrop_path} `} alt={tvshow.name}></img>
         
         <div className={s.title}>{tvshow.name}</div>
-
+    {console.log("tvShowListItem called")}
     </div>
   )
 }

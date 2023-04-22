@@ -8,11 +8,15 @@ import { ShowDetails } from './tvShowDetails/ShowDetails';
 import Logo from './Logo/Logo';
 import logoImg from './Assets/Images/OSGLogo.png'
 import TVShowListItem from './TVShowListItem/TVShowListItem';
-
+import TVShowList from './TVShowList/TVShowList';
 
 function App() {
   const [tvShows, setTvShows]=useState('')
   const [recList, setRecList]=useState([])
+
+  function updateTVShow(tvshow){
+    setTvShows(tvshow)
+  }
 
   async function getPopularShows(){
     const popShow = await tvShowAPI.fetchShowAPI()
@@ -60,13 +64,8 @@ function App() {
       </div>
       <div className={s.recommendations}>
         <div>
-        {tvShows && <TVShowListItem tvshow={tvShows} onClick={(tvshow)=>{
-        console.log(tvshow)
-      }}></TVShowListItem>}
+        {tvShows && <TVShowList recList={recList} onClickItem={updateTVShow}></TVShowList>}
 
-        {tvShows && <TVShowListItem tvshow={tvShows} onClick={(tvshow)=>{
-        console.log(tvshow)
-      }}></TVShowListItem>}
         </div>
         
        </div>

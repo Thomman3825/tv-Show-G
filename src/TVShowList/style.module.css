@@ -1,0 +1,22 @@
+.container{
+
+}
+.title{
+font-size: 25px;
+font-weight: 300;
+}
+.list{
+    display: flex;
+    overflow-x: hidden;
+    width: 100vw - 25px;
+    justify-content: space-between;
+}
+.list:hover{
+    overflow: auto;
+}
+ ::-webkit-scrollbar{
+background: transparent;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    background: rgba(0,0,0,0.7);
+}
